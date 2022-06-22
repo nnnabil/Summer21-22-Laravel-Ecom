@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,3 +41,6 @@ Route::get('/customer/myorders/details/{id}',[CustomerController::class,'orderde
 // Add Product
 Route::get('/addProduct',[ProductController::class,'addProduct'])->name('addProduct');
 Route::post('/addProduct',[ProductController::class,'addProductSubmit'])->name('addProduct');
+
+//Email Service
+Route::get('/customer/myorders/invoiceEmail/{id}', [OrderController::class, 'invoiceEmail'])->middleware('LoggedInCustomer')->name('customer.myorders.invoiceEmail'); 
