@@ -91,7 +91,7 @@ class LoginController extends Controller
     }
     public function loginSubmit(Request $req){
         $c = Customer::where('phone',$req->phone)
-                  ->where('password',md5($req->password))
+                  ->where('password',$req->password)
                   ->first();
         if($c){
             session()->put('user',$c->phone);
